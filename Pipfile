@@ -10,3 +10,4 @@ opencv-python = "*"
 [dev-packages]
 pytest = "*"
 pylint = "*"
+autopep8 = "*"

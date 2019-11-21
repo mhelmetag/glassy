@@ -1,3 +1,7 @@
 {
-  "python.pythonPath": "/Users/max/.local/share/virtualenvs/glassy-JAbBk6Mx/bin/python"
+  "python.pythonPath": "/Users/max/.local/share/virtualenvs/glassy-JAbBk6Mx/bin/python",
+  "python.linting.pylintArgs": [
+    "--extension-pkg-whitelist=cv2"
+  ],
+  "editor.formatOnSave": true
 }
