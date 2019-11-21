@@ -1,15 +1,12 @@
-"Script for pulling frames from Surfline surfcams"
-# pull still rewindClip (later shift to camera stream from streamUrl as it's shorter, less space)
-# only pull stills from cams with nighttime is false && status.isDown is false
+"""Script for pulling frames from Surfline surfcams"""
 
 import os
 import time
 import requests
-import cv2
+import ffmpeg
 
 SPOT_IDS = [
     "5842041f4e65fad6a7708966",  # Sandspit
-    "5842041f4e65fad6a770896c",  # Campus Point
     "584204204e65fad6a770904d",  # Mondos
     "584204214e65fad6a7709cfd",  # Ventura Point
     "584204214e65fad6a7709cfc",  # County Line
@@ -26,12 +23,16 @@ for spot_id in SPOT_IDS:
 
     spots_json = json_overview_response["data"]["spots"]
     spot = [s for s in spots_json if s["_id"] == spot_id][0]
-    rewind_url = spot["cameras"][0]["rewindClip"]
+    stream_url = spot["cameras"][0]["streamUrl"]
 
-    vidcap = vidcap = cv2.VideoCapture(rewind_url)
-    success, image = vidcap.read()
-    filepath = os.path.join(
-        DATA_DIR, f"stills/{TIMESTAMP}_{spot_id}_001.jpg")
-    cv2.imwrite(filepath, image)
+    ffmpeg_fileformat = os.path.join(
+        DATA_DIR, f"stills/{TIMESTAMP}_{spot_id}_%04d.jpg")
 
-    print(f"Grabbed frame for spot {spot_id}")
+    stream = ffmpeg.input(stream_url, t=30)
+    stream = ffmpeg.filter(stream, 'fps', fps=1, round='down')
+    stream = ffmpeg.output(stream, ffmpeg_fileformat)
+    stream.run()
+
+    print(f"Grabbed frames for spot {spot_id}")
+
+print("Complete")
