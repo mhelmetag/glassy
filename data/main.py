@@ -26,7 +26,7 @@ for spot_id in SPOT_IDS:
     stream_url = spot["cameras"][0]["streamUrl"]
 
     ffmpeg_fileformat = os.path.join(
-        DATA_DIR, f"stills/{TIMESTAMP}_{spot_id}_%04d.jpg")
+        DATA_DIR, f"stills/{TIMESTAMP}_{spot_id}_%02d.jpg")
 
     stream = ffmpeg.input(stream_url, t=30)
     stream = ffmpeg.filter(stream, 'fps', fps=1, round='down')
