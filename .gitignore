@@ -8,3 +8,6 @@
 data/images/*.jpg
 ml/images/glassy/*.jpg
 ml/images/choppy/*.jpg
+
+# models
+ml/models/*.pth
