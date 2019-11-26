@@ -1,5 +1,10 @@
+# mac
+.DS_Store
+
 # editor
 .vscode
 
 # data
-data/stills/*.jpg
+data/images/*.jpg
+ml/images/glassy/*.jpg
+ml/images/choppy/*.jpg

@@ -6,6 +6,9 @@ name = "pypi"
 [packages]
 requests = "*"
 ffmpeg-python = "*"
+fastai = "*"
+starlette = "*"
+uvicorn = "*"
 
 [dev-packages]
 pytest = "*"
