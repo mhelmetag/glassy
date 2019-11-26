@@ -27,6 +27,8 @@ $ pipenv install
 $ pipenv shell
 ```
 
+Or Docker...
+
 # Local
 
 Testing can be done with these photos or others:
@@ -42,4 +44,8 @@ To run the server:
 $ uvicorn web:app
 ```
 
+Or Docker...
+
 # Deployment
+
+Deployed to Heroku with Docker.
