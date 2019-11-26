@@ -42,12 +42,4 @@ To run the server:
 $ uvicorn web:app
 ```
 
-Or...
-
-```sh
-$ heroku local
-```
-
 # Deployment
-
-Deployed to Heroku using Starlette and uvicorn.
