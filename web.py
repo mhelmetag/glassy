@@ -16,8 +16,6 @@ app = Starlette()
 
 @app.route("/classify-url", methods=["GET"])
 async def classify_url(request):
-    print("Classifying")
-
     bytes = get_bytes(request.query_params["url"])
     return predict_image_from_bytes(bytes)
 
