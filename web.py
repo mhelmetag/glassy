@@ -9,7 +9,7 @@ from io import BytesIO
 import requests
 import os
 
-path = Path("ml")
+path = Path("ml/images")
 learn = load_learner(path)
 app = Starlette()
 
